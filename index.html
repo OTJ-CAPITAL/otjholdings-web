@@ -7,155 +7,222 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+    body { background: #fff; color: #000; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
     a { text-decoration: none; color: inherit; }
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50; border-bottom: 1px solid #1a1a1a; background: rgba(0,0,0,0.92); backdrop-filter: blur(8px); }
-    .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; height: 64px; display: flex; align-items: center; justify-content: space-between; }
-    .logo { font-weight: 900; font-size: 15px; letter-spacing: 4px; }
-    .nav-links { display: flex; gap: 40px; }
-    .nav-links a { font-size: 13px; color: #666; transition: color 0.2s; }
-    .nav-links a:hover { color: #fff; }
-    .nav-cta { font-size: 13px; border: 1px solid #fff; padding: 8px 20px; transition: all 0.2s; }
-    .nav-cta:hover { background: #fff; color: #000; }
-    section { border-bottom: 1px solid #1a1a1a; }
-    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
-    #hero { min-height: 100vh; display: flex; align-items: center; padding-top: 64px; }
-    #hero .container { padding-top: 60px; padding-bottom: 60px; width: 100%; }
-    .eyebrow { font-size: 12px; color: #666; letter-spacing: 5px; text-transform: uppercase; margin-bottom: 32px; }
-    h1 { font-size: clamp(56px, 11vw, 130px); font-weight: 900; line-height: 0.9; letter-spacing: -4px; }
-    .hero-sub { margin-top: 32px; max-width: 500px; font-size: 18px; color: #888; line-height: 1.7; }
-    .companies-grid { margin-top: 80px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: #1a1a1a; border-top: 1px solid #1a1a1a; }
-    .company-card { background: #000; padding: 40px; transition: background 0.2s; }
-    .company-card:hover { background: #0a0a0a; }
-    .company-name { font-size: 20px; font-weight: 800; }
-    .company-name::after { content: " →"; }
-    .company-desc { font-size: 13px; color: #444; margin-top: 6px; }
-    #portfolio .container { padding: 120px 24px; }
-    .section-label { font-size: 11px; color: #666; letter-spacing: 5px; text-transform: uppercase; margin-bottom: 24px; }
-    h2 { font-size: clamp(36px, 5vw, 56px); font-weight: 900; line-height: 1.1; }
-    .portfolio-list { margin-top: 64px; display: flex; flex-direction: column; gap: 1px; background: #1a1a1a; }
-    .portfolio-item { background: #000; padding: 48px; display: grid; grid-template-columns: 1fr 2fr; gap: 40px; align-items: start; }
-    .portfolio-item:hover { background: #050505; }
-    .item-tag { font-size: 11px; color: #444; letter-spacing: 4px; text-transform: uppercase; }
-    .item-name { font-size: 28px; font-weight: 900; margin-top: 8px; }
-    .item-url { font-size: 13px; color: #444; margin-top: 4px; }
-    .item-desc { font-size: 15px; color: #666; line-height: 1.8; padding-top: 8px; }
-    #mission { background: #fff; color: #000; }
-    #mission .container { padding: 120px 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
-    .mission-body { color: #555; line-height: 1.8; font-size: 15px; margin-bottom: 20px; }
-    .mission-body.bold { color: #000; font-weight: 600; }
-    footer { padding: 60px 24px; }
-    .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: start; flex-wrap: wrap; gap: 32px; }
-    .footer-name { font-weight: 900; font-size: 17px; letter-spacing: 4px; }
-    .footer-sub { font-size: 13px; color: #444; margin-top: 4px; }
-    .footer-links { display: flex; flex-direction: column; gap: 8px; font-size: 13px; color: #444; }
-    .footer-links a:hover { color: #fff; }
-    .footer-links .col-title { font-size: 11px; color: #fff; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 4px; }
-    .footer-bottom { max-width: 1100px; margin: 40px auto 0; padding-top: 24px; border-top: 1px solid #111; font-size: 11px; color: #333; }
-    @media (max-width: 768px) {
+    ::selection { background: #000; color: #fff; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: #fff; border-bottom: 1px solid #000; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; height: 60px; }
+    .nav-logo { font-size: 12px; font-weight: 900; letter-spacing: 5px; text-transform: uppercase; }
+    .nav-links { display: flex; gap: 48px; }
+    .nav-links a { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: #888; transition: color 0.2s; }
+    .nav-links a:hover { color: #000; }
+    .nav-cta { font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; border: 1.5px solid #000; padding: 9px 24px; transition: all 0.2s; }
+    .nav-cta:hover { background: #000; color: #fff; }
+    section { border-bottom: 1px solid #000; }
+    .sec-label { font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: #999; margin-bottom: 48px; display: flex; align-items: center; gap: 16px; }
+    .sec-label::before { content: ''; display: block; width: 32px; height: 1px; background: #999; }
+    h2 { font-size: clamp(36px, 4vw, 54px); font-weight: 900; line-height: 1.05; letter-spacing: -2px; }
+
+    /* HERO */
+    #hero { min-height: 100vh; padding-top: 60px; display: grid; grid-template-columns: 1fr 1fr; }
+    .hero-left { padding: 80px 40px; border-right: 1px solid #000; display: flex; flex-direction: column; justify-content: space-between; }
+    .hero-right { padding: 80px 40px; display: flex; flex-direction: column; justify-content: space-between; }
+    .hero-eyebrow { font-size: 11px; letter-spacing: 5px; text-transform: uppercase; color: #999; }
+    h1 { font-size: clamp(64px, 10vw, 130px); font-weight: 900; line-height: 0.88; letter-spacing: -5px; margin-top: 32px; }
+    .hero-sub { font-size: 18px; color: #333; line-height: 1.7; max-width: 440px; }
+    .hero-companies { display: flex; flex-direction: column; gap: 1px; background: #000; margin-top: 48px; }
+    .company-row { background: #fff; padding: 28px 0; display: flex; justify-content: space-between; align-items: center; transition: all 0.2s; cursor: pointer; }
+    .company-row:hover { background: #f5f5f5; padding-left: 16px; }
+    .co-name { font-size: 20px; font-weight: 900; }
+    .co-type { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: #999; }
+    .co-arrow { font-size: 18px; color: #ccc; transition: color 0.2s; }
+    .company-row:hover .co-arrow { color: #000; }
+    .btn-black { background: #000; color: #fff; font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; padding: 18px 36px; display: inline-block; transition: background 0.2s; }
+    .btn-black:hover { background: #222; }
+
+    /* TICKER */
+    .ticker-bar { border-bottom: 1px solid #000; overflow: hidden; background: #000; color: #fff; padding: 14px 0; white-space: nowrap; }
+    .ticker-track { display: inline-block; animation: ticker 35s linear infinite; }
+    .ticker-item { display: inline-block; margin: 0 48px; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; }
+    .ticker-dot { color: #555; margin-right: 12px; }
+    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* PORTFOLIO */
+    #portfolio { border-bottom: 1px solid #000; }
+    .port-header { padding: 80px 40px 48px; border-bottom: 1px solid #000; display: flex; justify-content: space-between; align-items: flex-end; }
+    .port-item { display: grid; grid-template-columns: 320px 1fr auto; align-items: start; padding: 56px 40px; border-bottom: 1px solid #eee; gap: 60px; transition: background 0.2s; }
+    .port-item:last-child { border-bottom: none; }
+    .port-item:hover { background: #fafafa; }
+    .port-tag { font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: #999; margin-bottom: 12px; }
+    .port-name { font-size: 32px; font-weight: 900; letter-spacing: -1px; }
+    .port-url { font-size: 13px; color: #999; margin-top: 6px; }
+    .port-desc { font-size: 15px; color: #555; line-height: 1.8; }
+    .port-link { font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; border-bottom: 1.5px solid #000; padding-bottom: 2px; white-space: nowrap; align-self: center; }
+
+    /* NUMBERS */
+    #numbers { display: grid; grid-template-columns: repeat(4, 1fr); }
+    .num-box { padding: 64px 40px; border-right: 1px solid #000; transition: background 0.2s; }
+    .num-box:last-child { border-right: none; }
+    .num-box:hover { background: #f5f5f5; }
+    .num-val { font-size: 48px; font-weight: 900; letter-spacing: -3px; }
+    .num-lbl { font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: #999; margin-top: 12px; }
+
+    /* MISSION */
+    #mission { background: #000; color: #fff; display: grid; grid-template-columns: 1fr 1fr; }
+    .miss-left { padding: 100px 40px; border-right: 1px solid #222; }
+    .miss-right { padding: 100px 40px; }
+    .miss-label { font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: #666; margin-bottom: 48px; display: flex; align-items: center; gap: 16px; }
+    .miss-label::before { content: ''; display: block; width: 32px; height: 1px; background: #666; }
+    .miss-h2 { font-size: clamp(36px, 4vw, 54px); font-weight: 900; line-height: 1.05; letter-spacing: -2px; }
+    .miss-p { font-size: 16px; color: #888; line-height: 1.8; margin-bottom: 24px; }
+    .miss-p.strong { color: #fff; font-weight: 700; font-size: 18px; }
+    .btn-white { background: #fff; color: #000; font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; padding: 18px 36px; display: inline-block; transition: background 0.2s; margin-top: 16px; }
+    .btn-white:hover { background: #e0e0e0; }
+
+    /* FOOTER */
+    footer { padding: 60px 40px; border-top: none; border-bottom: none; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; }
+    .footer-brand { font-size: 13px; font-weight: 900; letter-spacing: 5px; }
+    .footer-sub { font-size: 13px; color: #999; margin-top: 8px; line-height: 1.6; }
+    .footer-col-title { font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: #999; margin-bottom: 20px; }
+    .footer-col a { display: block; font-size: 13px; color: #555; margin-bottom: 10px; transition: color 0.2s; }
+    .footer-col a:hover { color: #000; }
+    .footer-bottom { margin-top: 60px; padding-top: 24px; border-top: 1px solid #eee; display: flex; justify-content: space-between; font-size: 11px; color: #bbb; }
+
+    @media (max-width: 900px) {
+      nav { padding: 0 20px; }
       .nav-links { display: none; }
-      .companies-grid { grid-template-columns: 1fr; }
-      .portfolio-item { grid-template-columns: 1fr; gap: 16px; }
-      #mission .container { grid-template-columns: 1fr; gap: 40px; }
+      #hero { grid-template-columns: 1fr; }
+      .hero-left { border-right: none; border-bottom: 1px solid #000; }
+      .port-item { grid-template-columns: 1fr; gap: 20px; }
+      #numbers { grid-template-columns: 1fr 1fr; }
+      .num-box:nth-child(2) { border-right: none; }
+      #mission { grid-template-columns: 1fr; }
+      .miss-left { border-right: none; border-bottom: 1px solid #222; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
     }
   </style>
 </head>
 <body>
 
 <nav>
-  <div class="nav-inner">
-    <span class="logo">OTJ HOLDINGS</span>
-    <div class="nav-links">
-      <a href="#portfolio">Portfolio</a>
-      <a href="#mission">Mission</a>
-    </div>
-    <a href="mailto:hello@otjholdings.com" class="nav-cta">Contact</a>
+  <span class="nav-logo">OTJ Holdings</span>
+  <div class="nav-links">
+    <a href="#portfolio">Portfolio</a>
+    <a href="#numbers">Numbers</a>
+    <a href="#mission">Mission</a>
   </div>
+  <a href="mailto:hello@otjholdings.com" class="nav-cta">Contact</a>
 </nav>
 
 <section id="hero">
-  <div class="container">
-    <p class="eyebrow">Nairobi, Kenya</p>
-    <h1>OTJ<br>HOLDINGS</h1>
-    <p class="hero-sub">The parent company behind OTJ Capital, OTJ App, and OTJ Fellowship. Building Africa's financial future.</p>
-    <div class="companies-grid">
-      <a href="https://otjcapital.com" class="company-card">
-        <p class="company-name">OTJ Capital</p>
-        <p class="company-desc">AI hedge fund</p>
+  <div class="hero-left">
+    <div>
+      <p class="hero-eyebrow">Nairobi, Kenya</p>
+      <h1>OTJ<br>HOLD<br>INGS</h1>
+    </div>
+    <a href="#portfolio" class="btn-black">View Portfolio →</a>
+  </div>
+  <div class="hero-right">
+    <p class="hero-sub">The parent company behind OTJ Capital, OTJ App, and OTJ Fellowship. Building Africa's financial infrastructure from the ground up.</p>
+    <div class="hero-companies">
+      <a href="https://otj-capital.github.io/otjcapital-web/" class="company-row">
+        <div><p class="co-type">Finance</p><p class="co-name">OTJ Capital</p></div>
+        <span class="co-arrow">→</span>
       </a>
-      <a href="https://otj.app" class="company-card">
-        <p class="company-name">OTJ App</p>
-        <p class="company-desc">Investor platform</p>
+      <a href="https://otj-capital.github.io/otj-app-web/" class="company-row">
+        <div><p class="co-type">Technology</p><p class="co-name">OTJ App</p></div>
+        <span class="co-arrow">→</span>
       </a>
-      <a href="https://otjfellowship.com" class="company-card">
-        <p class="company-name">OTJ Fellowship</p>
-        <p class="company-desc">Next generation</p>
+      <a href="https://otj-capital.github.io/otjfellowship-web/" class="company-row">
+        <div><p class="co-type">Education</p><p class="co-name">OTJ Fellowship</p></div>
+        <span class="co-arrow">→</span>
       </a>
     </div>
   </div>
 </section>
 
-<section id="portfolio">
-  <div class="container">
-    <p class="section-label">Portfolio</p>
-    <h2>Our companies.</h2>
-    <div class="portfolio-list">
-      <div class="portfolio-item">
-        <div>
-          <p class="item-tag">Finance</p>
-          <p class="item-name">OTJ Capital</p>
-          <p class="item-url">otjcapital.com</p>
-        </div>
-        <p class="item-desc">An AI-native quantitative hedge fund deploying systematic trading strategies across crypto markets. Targeting $100M AUM by 2028. The engine runs 24/7, generating signals and executing orders autonomously.</p>
-      </div>
-      <div class="portfolio-item">
-        <div>
-          <p class="item-tag">Technology</p>
-          <p class="item-name">OTJ App</p>
-          <p class="item-url">otj.app</p>
-        </div>
-        <p class="item-desc">The investor portal for OTJ Capital. Real-time portfolio visibility, AI signal feed, live market intelligence across crypto, forex, and precious metals. Full trade transparency — not a monthly PDF.</p>
-      </div>
-      <div class="portfolio-item">
-        <div>
-          <p class="item-tag">Education</p>
-          <p class="item-name">OTJ Fellowship</p>
-          <p class="item-url">otjfellowship.com</p>
-        </div>
-        <p class="item-desc">A fellowship program developing the next generation of African quantitative researchers, engineers, and fund managers. 10 fellows per cohort. Top graduates join OTJ Capital full-time.</p>
-      </div>
-    </div>
+<div class="ticker-bar">
+  <div class="ticker-track">
+    <span class="ticker-item"><span class="ticker-dot">●</span>OTJ Capital — AI Hedge Fund</span>
+    <span class="ticker-item"><span class="ticker-dot">●</span>OTJ App — Investor Portal</span>
+    <span class="ticker-item"><span class="ticker-dot">●</span>OTJ Fellowship — Next Generation</span>
+    <span class="ticker-item"><span class="ticker-dot">●</span>$100M AUM Target · 2028</span>
+    <span class="ticker-item"><span class="ticker-dot">●</span>Nairobi, Kenya · Est. 2026</span>
+    <span class="ticker-item"><span class="ticker-dot">●</span>Building Africa's Financial Future</span>
+    <span class="ticker-item"><span class="ticker-dot">●</span>OTJ Capital — AI Hedge Fund</span>
+    <span class="ticker-item"><span class="ticker-dot">●</span>OTJ App — Investor Portal</span>
+    <span class="ticker-item"><span class="ticker-dot">●</span>OTJ Fellowship — Next Generation</span>
+    <span class="ticker-item"><span class="ticker-dot">●</span>$100M AUM Target · 2028</span>
+    <span class="ticker-item"><span class="ticker-dot">●</span>Nairobi, Kenya · Est. 2026</span>
+    <span class="ticker-item"><span class="ticker-dot">●</span>Building Africa's Financial Future</span>
   </div>
+</div>
+
+<section id="portfolio">
+  <div class="port-header">
+    <div><p class="sec-label">Portfolio</p><h2>Our companies.</h2></div>
+    <p style="font-size:13px;color:#999;max-width:280px;line-height:1.7;">Three companies. One mission. Building the full stack of African institutional finance.</p>
+  </div>
+  <div class="port-item">
+    <div><p class="port-tag">Finance</p><p class="port-name">OTJ Capital</p><p class="port-url">otjcapital.com</p></div>
+    <p class="port-desc">An AI-native quantitative hedge fund deploying systematic trading strategies across crypto markets. The engine scans every hour, generates signals from multiple strategies, and executes orders autonomously — 24/7, with zero human intervention. Targeting $100M AUM by 2028.</p>
+    <a href="https://otj-capital.github.io/otjcapital-web/" class="port-link">Visit →</a>
+  </div>
+  <div class="port-item">
+    <div><p class="port-tag">Technology</p><p class="port-name">OTJ App</p><p class="port-url">otj.app</p></div>
+    <p class="port-desc">The investor portal for OTJ Capital. Real-time portfolio value, open positions with unrealized PnL, full AI signal feed, trade history, and live market intelligence across crypto, global forex, and African currency pairs. Not a monthly PDF — a live dashboard updated every hour.</p>
+    <a href="https://otj-capital.github.io/otj-app-web/" class="port-link">Visit →</a>
+  </div>
+  <div class="port-item">
+    <div><p class="port-tag">Education</p><p class="port-name">OTJ Fellowship</p><p class="port-url">otjfellowship.com</p></div>
+    <p class="port-desc">A selective fellowship developing the next generation of African quantitative researchers, engineers, and fund managers. 10 fellows per cohort, three tracks (Quant Research, Engineering, Fund Operations), with a stipend and a path to joining OTJ Capital full-time.</p>
+    <a href="https://otj-capital.github.io/otjfellowship-web/" class="port-link">Visit →</a>
+  </div>
+</section>
+
+<section id="numbers">
+  <div class="num-box"><p class="num-val">3</p><p class="num-lbl">Companies</p></div>
+  <div class="num-box"><p class="num-val">$100M</p><p class="num-lbl">AUM Target</p></div>
+  <div class="num-box"><p class="num-val">2028</p><p class="num-lbl">Timeline</p></div>
+  <div class="num-box"><p class="num-val">NBO</p><p class="num-lbl">Nairobi, Kenya</p></div>
 </section>
 
 <section id="mission">
-  <div class="container">
-    <div>
-      <p class="section-label" style="color:#999">Mission</p>
-      <h2>Building Africa's financial infrastructure.</h2>
-    </div>
-    <div>
-      <p class="mission-body">Africa's capital markets are the final frontier. Undercapitalized, underinstitutionalized, and full of structural alpha. We are building the companies that will define what institutional finance looks like on this continent.</p>
-      <p class="mission-body">From quantitative hedge funds to investor platforms to the talent pipelines that power them — OTJ Holdings is the holding entity for all of it.</p>
-      <p class="mission-body bold">We build for Africa. We build for the world.</p>
-    </div>
+  <div class="miss-left">
+    <p class="miss-label">Mission</p>
+    <h2 class="miss-h2">Building Africa's financial infrastructure.</h2>
+  </div>
+  <div class="miss-right">
+    <p class="miss-p">Africa's capital markets are the final frontier. Undercapitalized, underinstitutionalized, and full of structural alpha that no one is capturing at institutional scale.</p>
+    <p class="miss-p">We are building the companies that will define what institutional finance looks like on this continent — from the trading engine to the investor portal to the talent pipeline.</p>
+    <p class="miss-p strong">We build for Africa. We build for the world.</p>
+    <a href="mailto:hello@otjholdings.com" class="btn-white">Get in touch →</a>
   </div>
 </section>
 
 <footer>
-  <div class="footer-inner">
+  <div class="footer-grid">
     <div>
-      <p class="footer-name">OTJ HOLDINGS</p>
-      <p class="footer-sub">Nairobi, Kenya</p>
+      <p class="footer-brand">OTJ HOLDINGS</p>
+      <p class="footer-sub">Nairobi, Kenya<br>Building Africa's financial infrastructure.</p>
     </div>
-    <div class="footer-links">
-      <p class="col-title">Companies</p>
-      <a href="https://otjcapital.com">OTJ Capital</a>
-      <a href="https://otj.app">OTJ App</a>
-      <a href="https://otjfellowship.com">OTJ Fellowship</a>
+    <div class="footer-col">
+      <p class="footer-col-title">Portfolio</p>
+      <a href="https://otj-capital.github.io/otjcapital-web/">OTJ Capital</a>
+      <a href="https://otj-capital.github.io/otj-app-web/">OTJ App</a>
+      <a href="https://otj-capital.github.io/otjfellowship-web/">OTJ Fellowship</a>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col-title">Contact</p>
+      <a href="mailto:hello@otjholdings.com">General</a>
+      <a href="mailto:invest@otjcapital.com">Invest</a>
+      <a href="mailto:careers@otjcapital.com">Careers</a>
     </div>
   </div>
-  <div class="footer-bottom">© 2026 OTJ Holdings. All rights reserved.</div>
+  <div class="footer-bottom">
+    <span>© 2026 OTJ Holdings. All rights reserved.</span>
+    <span>Nairobi, Kenya</span>
+  </div>
 </footer>
 
 </body>
