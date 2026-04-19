@@ -3,19 +3,19 @@ const companies = [
     name: 'OTJ Capital',
     url: 'otjcapital.com',
     type: 'Finance',
-    description: 'An AI-native quantitative hedge fund deploying systematic trading strategies across crypto markets. Targeting $100M AUM by 2028.',
+    description: 'An AI-native quantitative hedge fund. 42 systematic strategies deployed across crypto, forex, metals, and equities — 34 instruments, 4 exchanges, running autonomously 24/7. Targeting $100M AUM by 2028.',
   },
   {
     name: 'OTJ App',
     url: 'otj.app',
     type: 'Technology',
-    description: 'The investor portal for OTJ Capital. Real-time portfolio visibility, AI signal feed, live market intelligence, and full trade transparency.',
+    description: 'The investor portal for OTJ Capital. Real-time portfolio visibility, AI signal feed, live market intelligence across all 4 asset classes, full trade history, and strategy registry — all in one dashboard.',
   },
   {
     name: 'OTJ Fellowship',
     url: 'otjfellowship.com',
     type: 'Education',
-    description: 'A fellowship program developing the next generation of African quantitative researchers, engineers, and fund managers.',
+    description: 'A selective fellowship program developing the next generation of African quantitative researchers, engineers, and fund managers. 10 fellows per cohort. Top performers join OTJ Capital full-time.',
   },
 ]
 
