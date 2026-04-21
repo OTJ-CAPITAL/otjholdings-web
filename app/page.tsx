@@ -1,16 +1,20 @@
-import Navbar from '@/components/ui/Navbar'
-import Hero from '@/components/sections/Hero'
-import Portfolio from '@/components/sections/Portfolio'
-import Mission from '@/components/sections/Mission'
-import Footer from '@/components/ui/Footer'
+import Navigation from '@/components/shared/Navigation'
+import Footer from '@/components/shared/Footer'
+import Hero from '@/components/holdings/Hero'
+import Entities from '@/components/holdings/Entities'
+import Philosophy from '@/components/holdings/Philosophy'
+import Roadmap from '@/components/holdings/Roadmap'
+import Contact from '@/components/holdings/Contact'
 
 export default function Home() {
   return (
-    <main>
-      <Navbar />
+    <main style={{ background: '#FAFAFA' }}>
+      <Navigation />
       <Hero />
-      <Portfolio />
-      <Mission />
+      <Entities />
+      <Philosophy />
+      <Roadmap />
+      <Contact />
       <Footer />
     </main>
   )
