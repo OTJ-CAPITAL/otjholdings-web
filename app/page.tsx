@@ -1,6 +1,8 @@
 import Navigation from '@/components/shared/Navigation'
 import Footer from '@/components/shared/Footer'
 import Hero from '@/components/holdings/Hero'
+import OrgChart from '@/components/holdings/OrgChart'
+import Stats from '@/components/holdings/Stats'
 import Entities from '@/components/holdings/Entities'
 import Philosophy from '@/components/holdings/Philosophy'
 import Roadmap from '@/components/holdings/Roadmap'
@@ -11,6 +13,8 @@ export default function Home() {
     <main>
       <Navigation />
       <Hero />
+      <OrgChart />
+      <Stats />
       <Entities />
       <Philosophy />
       <Roadmap />
