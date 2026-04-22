@@ -4,34 +4,28 @@ import { useInView } from 'react-intersection-observer'
 import { fadeUp, staggerContainer } from '@/lib/animations'
 
 const entities = [
-  { tag: 'PARENT', title: 'OTJ Holdings', domain: 'otjholdings.com', body: 'The parent. The legal fortress. Owns and governs every entity within the OTJ ecosystem.', link: null },
-  { tag: 'TRADING ENGINE', title: 'OTJ Capital', domain: 'otjcapital.com', body: 'The AI engine. Quantitative. Fully automated investment execution across crypto and emerging markets.', link: 'https://otjcapital.com' },
-  { tag: 'TALENT ENGINE', title: 'OTJ Fellowship', domain: 'otjfellowship.com', body: 'The human layer. Where exceptional talent is groomed to build, govern, and evolve the AI system.', link: 'https://otjfellowship.com' },
-  { tag: 'TRANSPARENCY', title: 'OTJ App', domain: 'otj.app', body: 'The interface. Real-time performance. Full portfolio visibility. Investor transparency at scale.', link: 'https://otj.app' },
+  { tag:'PARENT', title:'OTJ Holdings', domain:'otjholdings.com', body:'The legal entity that owns everything. Makes governance decisions, manages legal structure, and controls how capital is allocated across subsidiaries.', link: null },
+  { tag:'TRADING ENGINE', title:'OTJ Capital', domain:'otjcapital.com', body:'The AI quantitative fund. Runs automated trading strategies across crypto and African equity markets 24 hours a day.', link:'https://otjcapital.com' },
+  { tag:'TRANSPARENCY LAYER', title:'OTJ App', domain:'otj.app', body:'The investor dashboard. Real-time view of every position, trade, signal, and return. If you cannot see it, you should not trust it.', link:'https://otj.app' },
+  { tag:'TALENT ENGINE', title:'OTJ Fellowship', domain:'otjfellowship.com', body:'The human layer. Selects and trains exceptional people from Africa to build the quantitative models that run the fund.', link:'https://otjfellowship.com' },
 ]
 
 export default function Entities() {
-  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 })
+  const { ref, inView } = useInView({ triggerOnce: true, fallbackInView: true })
   return (
-    <section id="entities" ref={ref} style={{ background: '#FAFAFA', padding: '120px 32px' }}>
-      <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
-        <motion.div variants={staggerContainer} initial="hidden" animate={inView ? 'visible' : 'hidden'}>
-          <motion.div variants={fadeUp} style={{ fontFamily: 'Space Grotesk', fontSize: '10px', color: '#C9A84C', letterSpacing: '3px', marginBottom: '16px' }}>THE ECOSYSTEM</motion.div>
-          <motion.h2 variants={fadeUp} style={{ fontFamily: 'Space Grotesk', fontWeight: 700, fontSize: 'clamp(32px, 4vw, 48px)', color: '#080808', marginBottom: '64px' }}>Four bodies. One machine.</motion.h2>
-          <motion.div variants={staggerContainer} style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px' }}>
-            {entities.map((e, i) => (
-              <motion.div key={i} variants={fadeUp} style={{ background: '#FFFFFF', border: '1px solid #E0E0E0', padding: '40px 32px', borderRadius: '4px', transition: 'border-color 0.2s', display: 'flex', flexDirection: 'column' }}
-                onMouseEnter={ev => (ev.currentTarget.style.borderColor = '#C9A84C')}
-                onMouseLeave={ev => (ev.currentTarget.style.borderColor = '#E0E0E0')}>
-                <span style={{ fontFamily: 'Space Grotesk', fontSize: '10px', letterSpacing: '2px', color: '#C9A84C', background: 'rgba(201,168,76,0.1)', padding: '4px 10px', borderRadius: '2px', width: 'fit-content', marginBottom: '20px' }}>{e.tag}</span>
-                <h3 style={{ fontFamily: 'Space Grotesk', fontWeight: 600, fontSize: '20px', color: '#080808', marginBottom: '6px' }}>{e.title}</h3>
-                <div style={{ fontFamily: 'JetBrains Mono', fontSize: '12px', color: '#888888', marginBottom: '16px' }}>{e.domain}</div>
-                <p style={{ fontFamily: 'Inter', fontSize: '14px', color: '#444444', lineHeight: 1.7, flex: 1, marginBottom: '24px' }}>{e.body}</p>
-                {e.link ? (
-                  <a href={e.link} style={{ fontFamily: 'Space Grotesk', fontSize: '13px', color: '#C9A84C', textDecoration: 'none' }}>→ Explore</a>
-                ) : (
-                  <span style={{ fontFamily: 'Space Grotesk', fontSize: '13px', color: '#CCCCCC' }}>→ {e.domain}</span>
-                )}
+    <section id="entities" ref={ref} style={{ padding:'120px 32px',background:'#F5F5F5',borderBottom:'1px solid #E5E5E5' }}>
+      <div style={{ maxWidth:'1280px',margin:'0 auto' }}>
+        <motion.div variants={staggerContainer} initial="hidden" animate={inView?'visible':'hidden'}>
+          <motion.div variants={fadeUp} style={{ fontFamily:'var(--font-mono)',fontSize:'11px',letterSpacing:'2px',color:'#888',marginBottom:'16px' }}>THE STRUCTURE</motion.div>
+          <motion.h2 variants={fadeUp} style={{ fontFamily:'var(--font-sg)',fontWeight:800,fontSize:'clamp(28px,4vw,48px)',color:'#000',letterSpacing:'-1px',marginBottom:'64px' }}>What OTJ Holdings owns.</motion.h2>
+          <motion.div variants={staggerContainer} style={{ display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(280px,1fr))',gap:'0' }}>
+            {entities.map((e,i) => (
+              <motion.div key={i} variants={fadeUp} style={{ padding:'40px 32px',border:'1px solid #E5E5E5',marginLeft:i>0?'-1px':'0',background:'#fff',display:'flex',flexDirection:'column' }}>
+                <span style={{ fontFamily:'var(--font-mono)',fontSize:'10px',letterSpacing:'2px',color:'#888',border:'1px solid #E5E5E5',padding:'3px 8px',width:'fit-content',marginBottom:'20px' }}>{e.tag}</span>
+                <h3 style={{ fontFamily:'var(--font-sg)',fontWeight:700,fontSize:'20px',color:'#000',marginBottom:'4px' }}>{e.title}</h3>
+                <div style={{ fontFamily:'var(--font-mono)',fontSize:'12px',color:'#888',marginBottom:'16px' }}>{e.domain}</div>
+                <p style={{ fontSize:'14px',color:'#555',lineHeight:1.7,flex:1,marginBottom:'24px' }}>{e.body}</p>
+                {e.link ? <a href={e.link} style={{ fontSize:'13px',color:'#000',fontFamily:'var(--font-sg)',fontWeight:600 }}>Visit site →</a> : <span style={{ fontSize:'13px',color:'#BBB' }}>This site</span>}
               </motion.div>
             ))}
           </motion.div>

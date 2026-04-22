@@ -3,40 +3,29 @@ import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { fadeUp, staggerContainer } from '@/lib/animations'
 
-const metrics = [
-  { val: '4', label: 'Under governance', sub: 'entities' },
-  { val: '1', label: 'Across all bodies', sub: 'vision' },
-  { val: 'Mauritius', label: 'Fund domicile', sub: '' },
-  { val: '2026', label: 'Year founded', sub: '' },
-]
-
 export default function Hero() {
-  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 })
+  const { ref, inView } = useInView({ triggerOnce: true, fallbackInView: true })
   return (
-    <section ref={ref} style={{ background: '#FAFAFA', minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '120px 32px 80px' }}>
-      <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
-        <motion.div variants={staggerContainer} initial="hidden" animate={inView ? 'visible' : 'hidden'}>
-          <motion.div variants={fadeUp} style={{ fontFamily: 'Space Grotesk', fontSize: '10px', color: '#C9A84C', letterSpacing: '4px', marginBottom: '32px' }}>NAIROBI, KENYA — EST. 2026</motion.div>
-          <motion.h1 variants={fadeUp} style={{ fontFamily: 'Space Grotesk', fontWeight: 700, fontSize: 'clamp(48px, 7vw, 80px)', color: '#080808', lineHeight: 1.05, marginBottom: '32px' }}>
-            The Parent<br />Structure.
+    <section ref={ref} style={{ minHeight:'100vh',display:'flex',flexDirection:'column',justifyContent:'center',padding:'100px 32px 80px',borderBottom:'1px solid #E5E5E5' }}>
+      <div style={{ maxWidth:'900px',margin:'0 auto',width:'100%' }}>
+        <motion.div variants={staggerContainer} initial="hidden" animate={inView?'visible':'hidden'}>
+          <motion.div variants={fadeUp} style={{ fontFamily:'var(--font-mono)',fontSize:'11px',letterSpacing:'2px',color:'#888',marginBottom:'32px' }}>OTJ HOLDINGS — PARENT COMPANY</motion.div>
+          <motion.h1 variants={fadeUp} style={{ fontFamily:'var(--font-sg)',fontWeight:800,fontSize:'clamp(40px,6vw,80px)',color:'#000',lineHeight:1.05,letterSpacing:'-2px',marginBottom:'32px' }}>
+            One company.<br />Four machines.
           </motion.h1>
-          <motion.p variants={fadeUp} style={{ fontFamily: 'Inter', fontSize: '20px', color: '#666666', maxWidth: '540px', lineHeight: 1.7, marginBottom: '32px' }}>
-            The legal and structural foundation that owns, governs, and protects the entire OTJ ecosystem. Every entity. Every decision. Every dollar.
+          <motion.p variants={fadeUp} style={{ fontSize:'20px',color:'#444',maxWidth:'560px',lineHeight:1.7,marginBottom:'48px' }}>
+            OTJ Holdings is the legal and structural foundation that owns OTJ Capital, OTJ App, and OTJ Fellowship. It governs how capital moves, how decisions are made, and how the system expands.
           </motion.p>
-          {/* Gold rule */}
-          <motion.div variants={fadeUp} style={{ width: '60px', height: '1px', background: '#C9A84C', marginBottom: '48px' }} />
-          {/* CTAs */}
-          <motion.div variants={fadeUp} style={{ display: 'flex', gap: '16px', marginBottom: '64px', flexWrap: 'wrap' }}>
-            <a href="#entities" style={{ background: '#080808', color: '#FFFFFF', padding: '14px 32px', fontFamily: 'Space Grotesk', fontWeight: 600, fontSize: '15px', textDecoration: 'none', borderRadius: '2px' }}>Our Entities →</a>
-            <a href="#roadmap" style={{ border: '1px solid #080808', color: '#080808', padding: '14px 32px', fontFamily: 'Space Grotesk', fontWeight: 600, fontSize: '15px', textDecoration: 'none', borderRadius: '2px' }}>Learn More</a>
+          <motion.div variants={fadeUp} style={{ display:'flex',gap:'16px',marginBottom:'80px' }}>
+            <a href="#entities" style={{ background:'#000',color:'#fff',padding:'14px 32px',fontFamily:'var(--font-sg)',fontWeight:600,fontSize:'15px' }}>The Entities</a>
+            <a href="#contact" style={{ border:'1px solid #000',color:'#000',padding:'14px 32px',fontFamily:'var(--font-sg)',fontWeight:600,fontSize:'15px' }}>Get in touch</a>
           </motion.div>
-          {/* Metrics */}
-          <motion.div variants={fadeUp} style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '32px', maxWidth: '640px', paddingTop: '40px', borderTop: '1px solid #E0E0E0' }}>
-            {metrics.map((m, i) => (
-              <div key={i}>
-                <div style={{ fontFamily: 'Space Grotesk', fontWeight: 700, fontSize: '28px', color: '#080808', marginBottom: '4px' }}>{m.val}</div>
-                <div style={{ fontFamily: 'Inter', fontSize: '12px', color: '#888888' }}>{m.label}</div>
-              </div>
+          <motion.div variants={staggerContainer} style={{ display:'grid',gridTemplateColumns:'repeat(4,1fr)',gap:'0',borderTop:'1px solid #E5E5E5',paddingTop:'40px' }}>
+            {[['4','entities'],['1','parent structure'],['$0','external debt'],['100%','owner-built']].map(([v,l],i) => (
+              <motion.div key={i} variants={fadeUp} style={{ paddingRight:'24px',borderRight:i<3?'1px solid #E5E5E5':'none',marginRight:i<3?'24px':'0' }}>
+                <div style={{ fontFamily:'var(--font-sg)',fontWeight:800,fontSize:'28px',color:'#000',marginBottom:'4px' }}>{v}</div>
+                <div style={{ fontSize:'13px',color:'#888' }}>{l}</div>
+              </motion.div>
             ))}
           </motion.div>
         </motion.div>
