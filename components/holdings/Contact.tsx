@@ -1,66 +1,21 @@
+'use client'
+import { motion } from 'framer-motion'
+import { useInView } from 'react-intersection-observer'
+import { fadeUp, staggerContainer } from '@/lib/animations'
+
 export default function Contact() {
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.2 })
   return (
-    <section
-      id="contact"
-      style={{
-        background: '#080808',
-        padding: '96px 24px',
-      }}
-    >
-      <div
-        style={{
-          maxWidth: '1200px',
-          margin: '0 auto',
-        }}
-      >
-        {/* Headline */}
-        <h2
-          style={{
-            fontFamily: "'Space Grotesk', sans-serif",
-            fontWeight: 700,
-            fontSize: 'clamp(36px, 5vw, 52px)',
-            color: '#FFFFFF',
-            letterSpacing: '-0.5px',
-            marginBottom: '20px',
-          }}
-        >
-          Ready to talk?
-        </h2>
-
-        {/* Body */}
-        <p
-          style={{
-            fontFamily: "'Inter', sans-serif",
-            fontWeight: 400,
-            fontSize: '18px',
-            lineHeight: 1.6,
-            color: '#888888',
-            maxWidth: '520px',
-            marginBottom: '40px',
-          }}
-        >
+    <section id="contact" ref={ref} style={{ background: '#080808', padding: '120px 32px' }}>
+      <motion.div variants={staggerContainer} initial="hidden" animate={inView ? 'visible' : 'hidden'} style={{ maxWidth: '600px', margin: '0 auto', textAlign: 'center' }}>
+        <motion.h2 variants={fadeUp} style={{ fontFamily: 'Space Grotesk', fontWeight: 700, fontSize: 'clamp(36px, 5vw, 52px)', color: '#FFFFFF', marginBottom: '24px' }}>Ready to talk?</motion.h2>
+        <motion.p variants={fadeUp} style={{ fontFamily: 'Inter', fontSize: '18px', color: '#888888', marginBottom: '40px', lineHeight: 1.7 }}>
           Whether you are an investor, a prospective Fellow, or a strategic partner.
-        </p>
-
-        {/* Email */}
-        <a
-          href="mailto:hello@otjholdings.com"
-          style={{
-            fontFamily: "'Space Grotesk', sans-serif",
-            fontWeight: 600,
-            fontSize: '20px',
-            color: '#C9A84C',
-            textDecoration: 'none',
-            letterSpacing: '0.3px',
-            transition: 'color 0.2s',
-            display: 'inline-block',
-          }}
-          onMouseEnter={e => ((e.target as HTMLElement).style.color = '#E8C96A')}
-          onMouseLeave={e => ((e.target as HTMLElement).style.color = '#C9A84C')}
-        >
-          hello@otjholdings.com
-        </a>
-      </div>
+        </motion.p>
+        <motion.a variants={fadeUp} href="mailto:hello@otjholdings.com" style={{ fontFamily: 'Space Grotesk', fontSize: '18px', color: '#C9A84C', textDecoration: 'none', letterSpacing: '0.5px' }}>
+          hello@otjholdings.com →
+        </motion.a>
+      </motion.div>
     </section>
   )
 }

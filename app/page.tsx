@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import Navigation from '@/components/shared/Navigation'
 import Footer from '@/components/shared/Footer'
 import Hero from '@/components/holdings/Hero'
@@ -8,7 +10,7 @@ import Contact from '@/components/holdings/Contact'
 
 export default function Home() {
   return (
-    <main style={{ background: '#FAFAFA' }}>
+    <main>
       <Navigation />
       <Hero />
       <Entities />
